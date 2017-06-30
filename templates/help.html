@@ -24,8 +24,11 @@
 </head>
 <body>
 <div class="container main-content">
-    <form method="post" action="">
+    <form id="report-form" method="post" action="">
         {% csrf_token %}
+        <input style="display:none" id="latitude-input" name="latitude" />
+        <input style="display:none" id="longitude-input" name="longitude" />
+
         <div class="row control-row">
             <div class="col-xs-12">
                 <div class="form-group">
@@ -64,7 +67,7 @@
     {% endif %}
 </div><!-- /.container -->
 
-<script src="{% static "jquery-3.2.1.slim.min.js" %}"></script>
+<script src="{% static "jquery-3.2.1.min.js" %}"></script>
 <script src="{% static "bootstrap-3.3.7/js/bootstrap.min.js" %}"></script>
 
 <script>
@@ -76,6 +79,26 @@
             buttonElement.text('Loading...');
             return true;
         });
+
+        $("#report-form button[type=submit]").click(function () {
+            $(this).attr("clicked", "true");
+        });
+
+        $('#report-form').submit(function (event) {
+            event.preventDefault();
+            navigator.geolocation.getCurrentPosition(savePosition);
+            console.log(event.target);
+            console.log(event.currentTarget);
+            return false;
+        });
+
+        function savePosition(position) {
+            console.log(position);
+            $('#latitude-input').val(position.coords.latitude);
+            $('#longitude-input').val(position.coords.longitude);
+            $('#report-form').unbind('submit');
+            $("button[type=submit][clicked=true]").click();
+        }
     });
 </script>
 
