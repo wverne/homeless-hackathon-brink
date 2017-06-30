@@ -1,1 +1,85 @@
-<button>Help</button>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Brinq</title>
+
+    <link href="{% static "bootstrap-3.3.7/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    {% block custom-style %}
+    <style>
+        .main-content {
+            max-width: 400px;
+        }
+        .control-row {
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+<div class="container main-content">
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" name="help">
+                        Help Someone
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" name="safety">
+                        Safety
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" name="health">
+                        Health
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% if message %}
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-success">{{ message }}</p>
+            </div>
+        </div>
+    {% endif %}
+</div><!-- /.container -->
+
+<script src="{% static "jquery-3.2.1.slim.min.js" %}"></script>
+<script src="{% static "bootstrap-3.3.7/js/bootstrap.min.js" %}"></script>
+
+<script>
+    $(document).ready(function () {
+        {# Prevent users from clicking buttons repeatedly #}
+        $('.control-row form').submit(function (event) {
+            var buttonElement = $(this).find('button');
+            buttonElement.attr('disabled', 'disabled');
+            buttonElement.text('Loading...');
+            return true;
+        });
+    });
+</script>
+
+{% block post-scripts %}{% endblock %}
+
+</body>
+</html>

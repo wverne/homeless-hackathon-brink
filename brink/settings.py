@@ -144,3 +144,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/etc/opt/truth/staticroot'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
