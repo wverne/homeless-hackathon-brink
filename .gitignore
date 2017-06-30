@@ -99,3 +99,12 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Secret key
+secret_key.txt
+
+# Local db
+db.sqlite3
+
+# PyCharm files
+.idea
