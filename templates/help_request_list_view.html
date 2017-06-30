@@ -1,1 +1,7 @@
 <div>Help Requests</div>
+
+{% for help_request in help_requests %}
+<div>
+    {{ help_request.type }}
+</div>
+{% endfor %}

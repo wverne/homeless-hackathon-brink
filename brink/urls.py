@@ -22,5 +22,5 @@ from . import adminviews
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.help_view),
-    url(r'^incidentqueue$', adminviews.help_request_list_view),
+    url(r'^helprequests$', adminviews.help_request_list_view),
 ]
