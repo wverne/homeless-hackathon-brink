@@ -147,3 +147,5 @@ STATIC_ROOT = '/etc/opt/truth/staticroot'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+CSRF_TRUSTED_ORIGINS = ['brinq.org', 'www.brinq.org']
