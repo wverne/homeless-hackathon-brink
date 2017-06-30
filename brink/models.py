@@ -21,3 +21,11 @@ class HelpRequest(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     resolved = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return "{} at {}".format(self.get_type_display(),
+                                 self.time.isoformat())
+
+    class Meta:
+        # Query history for a certain type
+        index_together = ('time', 'type')
