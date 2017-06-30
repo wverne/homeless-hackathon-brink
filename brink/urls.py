@@ -17,8 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from . import views
+from . import adminviews
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.help_view),
+    url(r'^incidentqueue$', adminviews.help_request_list_view),
 ]
