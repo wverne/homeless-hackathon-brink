@@ -60,3 +60,9 @@ def help_view(request):
         template_dict['message'] = 'Thank you!'
 
     return render(request, 'help.html', template_dict)
+
+
+def map_view(request):
+    return render(request, "map.html", {
+        'help_requests': HelpRequest.objects.filter(resolved=False).order_by('-time')[:20]
+    })

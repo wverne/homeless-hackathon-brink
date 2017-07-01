@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>Manchester Map</title>
+   <style>
+       #map {
+           height: 100%;
+           width: 100%;
+       }
+
+       html,
+       body {
+           height: 100%;
+           margin: 0;
+           padding: 0;
+       }
+   </style>
+</head>
+
+<body>
+   <div id="map"></div>
+   <script>
+       var map, heatmap;
+
+       function initMap() {
+           map = new google.maps.Map(document.getElementById('map'), {
+               zoom: 13,
+               center: {
+                   lat: 53.48,
+                   lng: -2.24
+               },
+               mapTypeId: 'satellite'
+           });
+
+           {% for req in help_requests %}
+               var marker = new google.maps.Marker({
+                  position: {
+                      lat: {{ req.latitude }},
+                      lng: {{ req.longitude }}
+                  },
+                  map: map,
+                  title: '{{ req.get_type_display }}'
+                });
+           {% endfor %}
+
+           map.fitBounds(window.bounds);
+       }
+   </script>
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8FrouKpKGcppuLCw-DaPvCP9rLcONCmw&libraries=visualization&callback=initMap">
+
+   </script>
+</body>
+
+</html>
