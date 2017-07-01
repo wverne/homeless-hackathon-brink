@@ -7,24 +7,28 @@ from django.shortcuts import render
 from .models import HelpRequest
 
 
+FORM_TYPE_MAP = {
+    'rough-sleeping': HelpRequest.TYPE_ROUGH_SLEEPING,
+    'begging': HelpRequest.TYPE_BEGGING,
+    'asb': HelpRequest.TYPE_ANTISOCIAL_BEHAVIOR
+}
+
+
 def help_view(request):
     template_dict = {}
 
     if request.method == 'POST':
-        help_request = HelpRequest(
+        try:
+            report_type = FORM_TYPE_MAP[request.POST['report-type']]
+        except KeyError:
+            return HttpResponseBadRequest("no type found")
+
+        help_request = HelpRequest.objects.create(
             time=datetime.datetime.now(tz=pytz.UTC),
             latitude=float(request.POST['latitude']),
             longitude=float(request.POST['longitude']),
+            type=report_type
         )
-        if 'help' in request.POST:
-            help_request.type = HelpRequest.TYPE_ROUGH_SLEEPING
-        elif 'safety' in request.POST:
-            help_request.type = HelpRequest.TYPE_SAFETY
-        elif 'health' in request.POST:
-            help_request.type = HelpRequest.TYPE_HEALTH
-        else:
-            return HttpResponseBadRequest("no type found")
-        help_request.save()
 
         template_dict['message'] = 'Thank you!'
 

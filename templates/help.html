@@ -24,16 +24,12 @@
 </head>
 <body>
 <div class="container main-content">
-    <form id="report-form" method="post" action="">
-        {% csrf_token %}
-        <input style="display:none" id="latitude-input" name="latitude" />
-        <input style="display:none" id="longitude-input" name="longitude" />
-
+    <div id="landing-section">
         <div class="row control-row">
             <div class="col-xs-12">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block" name="help">
-                        Help Someone
+                    <button class="btn btn-primary btn-block" id="button-help-someone">
+                        Help someone
                     </button>
                 </div>
             </div>
@@ -41,7 +37,76 @@
         <div class="row control-row">
             <div class="col-xs-12">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block" name="safety">
+                    <button class="btn btn-primary btn-block" id="button-help-me">
+                        Help me
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" id="button-learn-more">
+                        Learn more
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="help-someone-section" style="display:none">
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" id="button-rough-sleeping">
+                        Rough sleeping
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" id="button-begging">
+                        Begging
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-danger btn-block" id="button-health">
+                        Health
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-block" id="button-help-someone-back">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="help-me-section" style="display:none">
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" id="button-asb">
+                        Anti-social behaviour
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-danger btn-block" id="button-safety">
                         Safety
                     </button>
                 </div>
@@ -50,8 +115,84 @@
         <div class="row control-row">
             <div class="col-xs-12">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block" name="health">
-                        Health
+                    <button class="btn btn-block" id="button-help-me-back">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="learn-more-section" style="display:none">
+        <div class="row control-row">
+            <div class="col-xs-12">
+                Ramps beard fingerstache mlkshk selvage pour-over cardigan blog taiyaki, organic stumptown chicharrones. Banh mi four dollar toast edison bulb, retro YOLO affogato deep v before they sold out kale chips. Pour-over cloud bread poke bushwick.
+
+                PBR&B lumbersexual hot chicken fingerstache, mixtape craft beer kinfolk marfa vegan selfies brunch man braid gastropub taiyaki venmo. Bicycle rights single-origin coffee keytar copper mug organic shoreditch.
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-block" id="button-learn-more-back">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="call-section" style="display:none">
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <a href="tel:+44-78-7654-6700" class="btn btn-block btn-danger">
+                        Call 999
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <a href="tel:+44-78-7654-6700" class="btn btn-block btn-primary">
+                        Call 101
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-block" id="button-call-back">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="report-form" method="post" action="" style="display:none">
+        {% csrf_token %}
+        <input style="display:none" id="latitude-input" name="latitude" />
+        <input style="display:none" id="longitude-input" name="longitude" />
+        <input style="display:none" id="report-type-input" name="report-type" />
+
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" id="button-submit-report">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row control-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-block" id="button-report-form-back">
+                        Back
                     </button>
                 </div>
             </div>
@@ -72,34 +213,125 @@
 
 <script>
     $(document).ready(function () {
-        {# Prevent users from clicking buttons repeatedly #}
+        preventRepeatClicks();
+
+        var landingSection = $('#landing-section');
+        var helpSomeoneSection = $('#help-someone-section');
+        var helpMeSection = $('#help-me-section');
+        var learnMoreSection = $('#learn-more-section');
+        var callSection = $('#call-section');
+        var reportForm = $('#report-form');
+
+        {# Landing page nav #}
+        $('#button-help-someone').click(function () {
+            landingSection.hide();
+            helpSomeoneSection.show();
+            updatePosition();
+        });
+
+        $('#button-help-me').click(function () {
+            landingSection.hide();
+            helpMeSection.show();
+            updatePosition();
+        });
+
+        $('#button-learn-more').click(function () {
+            landingSection.hide();
+            learnMoreSection.show();
+            updatePosition();
+        });
+
+        {# Help someone nav #}
+        $('#button-rough-sleeping').click(function () {
+            helpSomeoneSection.hide();
+            reportForm.show();
+            setReportType('rough-sleeping');
+        });
+
+        $('#button-begging').click(function () {
+            helpSomeoneSection.hide();
+            reportForm.show();
+            setReportType('begging');
+        });
+
+        $('#button-health').click(function () {
+            helpSomeoneSection.hide();
+            callSection.show();
+        });
+
+        {# Help me nav #}
+        $('#button-asb').click(function () {
+            helpMeSection.hide();
+            reportForm.show();
+            setReportType('asb');
+        });
+
+        $('#button-safety').click(function () {
+            helpMeSection.hide();
+            callSection.show();
+        });
+
+        {# Back buttons #}
+        $('#button-help-someone-back').click(function () {
+            helpSomeoneSection.hide();
+            landingSection.show();
+        });
+
+        $('#button-help-me-back').click(function () {
+            helpMeSection.hide();
+            landingSection.show();
+        });
+
+        $('#button-learn-more-back').click(function () {
+            learnMoreSection.hide();
+            landingSection.show();
+        });
+
+        $('#button-call-back').click(function () {
+            callSection.hide();
+            landingSection.show();
+        });
+
+        $('#button-report-form-back').click(function (event) {
+            event.preventDefault();
+
+            reportForm.hide();
+            landingSection.show();
+
+            return false;
+        });
+    });
+
+    function preventRepeatClicks() {
+        {# Prevent users from clicking submit buttons repeatedly #}
         $('.control-row form').submit(function (event) {
             var buttonElement = $(this).find('button');
             buttonElement.attr('disabled', 'disabled');
             buttonElement.text('Loading...');
             return true;
         });
+    }
 
-        $("#report-form button[type=submit]").click(function () {
-            $(this).attr("clicked", "true");
-        });
+    function savePosition(position) {
+        $('#latitude-input').val(position.coords.latitude);
+        $('#longitude-input').val(position.coords.longitude);
 
-        $('#report-form').submit(function (event) {
-            event.preventDefault();
-            navigator.geolocation.getCurrentPosition(savePosition);
-            console.log(event.target);
-            console.log(event.currentTarget);
-            return false;
-        });
+        var submitButton = $('#button-submit-report');
+        submitButton.text('Submit');
+        submitButton.prop('disabled', false);
+    }
 
-        function savePosition(position) {
-            console.log(position);
-            $('#latitude-input').val(position.coords.latitude);
-            $('#longitude-input').val(position.coords.longitude);
-            $('#report-form').unbind('submit');
-            $("button[type=submit][clicked=true]").click();
-        }
-    });
+    function updatePosition() {
+        var submitButton = $('#button-submit-report');
+        submitButton.text('Getting location...');
+        submitButton.prop('disabled', true);
+
+        navigator.geolocation.getCurrentPosition(savePosition);
+    }
+
+    function setReportType(reportType) {
+        $('#report-type-input').val(reportType);
+    }
 </script>
 
 {% block post-scripts %}{% endblock %}
