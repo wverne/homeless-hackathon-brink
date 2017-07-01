@@ -19,6 +19,9 @@
             padding-top: 16px;
             padding-bottom: 16px;
         }
+        body {
+            background: url("{% static "crossword.png" %}") repeat;
+        }
     </style>
     {% endblock %}
 </head>
@@ -178,6 +181,52 @@
         <input style="display:none" id="longitude-input" name="longitude" />
         <input style="display:none" id="report-type-input" name="report-type" />
 
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-label">
+                        Gender
+                    </button>
+                </span>
+                <select name="gender" id="gender-select" class="form-control">
+                    <option value="unknown">I don't know</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-label">
+                        Age
+                    </button>
+                </span>
+                <input name="age" id="age-input" type="number" class="form-control"
+                       min="1" max="200">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-label">
+                        Clothing
+                    </button>
+                </span>
+                <input name="clothing" id="clothing-input" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-label">
+                        Hair colour
+                    </button>
+                </span>
+                <input name="hair" id="hair-input" class="form-control">
+            </div>
+        </div>
+
         <div class="row control-row">
             <div class="col-xs-12">
                 <div class="form-group">
@@ -298,6 +347,12 @@
             reportForm.hide();
             landingSection.show();
 
+            return false;
+        });
+
+        {# Display buttons #}
+        $('.btn-label').click(function (event) {
+            event.preventDefault();
             return false;
         });
     });

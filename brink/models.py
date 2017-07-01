@@ -22,6 +22,8 @@ class HelpRequest(models.Model):
     longitude = models.FloatField()
     resolved = models.BooleanField(default=False)
 
+    notes = models.TextField(max_length=1000, blank=True)
+
     def __unicode__(self):
         return "{} at {}".format(self.get_type_display(),
                                  self.time.isoformat())

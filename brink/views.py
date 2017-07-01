@@ -23,11 +23,38 @@ def help_view(request):
         except KeyError:
             return HttpResponseBadRequest("no type found")
 
-        help_request = HelpRequest.objects.create(
+        gender = request.POST['gender']
+        age = request.POST['age']
+        clothing = request.POST['clothing']
+        hair_colour = request.POST['hair']
+        notes = ""
+
+        if gender == 'unknown':
+            notes += 'Gender unknown.'
+        else:
+            notes += 'Gender: {}.'.format(gender)
+
+        if age == '':
+            notes += ' Age unknown.'
+        else:
+            notes += ' Age estimate: {}.'.format(age)
+
+        if clothing == '':
+            notes += ' Clothing unknown.'
+        else:
+            notes += ' Clothing: "{}".'.format(clothing)
+
+        if hair_colour == '':
+            notes += ' Hair colour unknown.'
+        else:
+            notes += ' Hair colour: "{}".'.format(hair_colour)
+
+        HelpRequest.objects.create(
             time=datetime.datetime.now(tz=pytz.UTC),
             latitude=float(request.POST['latitude']),
             longitude=float(request.POST['longitude']),
-            type=report_type
+            type=report_type,
+            notes=notes
         )
 
         template_dict['message'] = 'Thank you!'
